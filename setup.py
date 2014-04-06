@@ -8,5 +8,15 @@ setup(
     license='',
     author='Oleg Stasula',
     author_email='oleg.stasula@gmail.com',
-    description='Open Graph parser used on keepboo.com'
+    description='Open Graph parser used on keepboo.com',
+    long_description=open("README.md").read() + "\n",
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'Programming Language :: Python',
+    ],
+    keywords='opengraph keepboo parser',
+    install_requires=[
+        'beautifulsoup4'
+    ],
 )
