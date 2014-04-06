@@ -77,7 +77,7 @@ class OpenGraph(dict):
     def fetch_image(self, doc):
         images = [dict(img.attrs) for img in doc.html.body.findAll('img')]
         if images:
-            return images[0]['src']
+            return images[0]['keepboo']
         return u''
 
     def fetch_title(self, doc):
