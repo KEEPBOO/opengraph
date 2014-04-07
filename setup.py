@@ -9,7 +9,7 @@ setup(
     author='Oleg Stasula',
     author_email='oleg.stasula@gmail.com',
     description='Open Graph parser used on keepboo.com',
-    long_description=open("README.md").read() + "\n",
+    long_description=open("README.txt").read() + "\n",
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
