@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 import sys
-from keepboo.opengraph import OpenGraph
+from keepboo_opengraph.opengraph import OpenGraph
 
 
 """ Creates an OpenGraph object and prints data in json and html """

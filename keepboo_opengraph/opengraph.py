@@ -53,7 +53,7 @@ class OpenGraph(dict):
                 try:
                     self[attr] = getattr(self, 'fetch_%s' % attr)(doc)
                 except AttributeError:
-                    print "Could not find attribute fetch_%s" % attr
+                    print "Could not find attribute 'fetch_%s'" % attr
 
     def is_valid(self):
         return all([hasattr(self, attr) for attr in self.required_attrs])
@@ -77,14 +77,17 @@ class OpenGraph(dict):
     def fetch_image(self, doc):
         images = [dict(img.attrs) for img in doc.html.body.findAll('img')]
         if images:
-            return images[0]['src']
+            return images[0].get('src')
         return u''
 
     def fetch_title(self, doc):
         return doc.html.head.title.text
 
     def fetch_description(self, doc):
-        return doc.html.head.description.text
+        description = doc.html.head.find(attrs={"name": "description"})
+        if description:
+            return description.get('content')
+        return ''
 
     def fetch_type(self, doc):
         return 'other'
