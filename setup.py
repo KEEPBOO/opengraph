@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='keepboo-opengraph',
-    version='0.1.1',
+    version='0.1.2',
     packages=['keepboo_opengraph'],
     url='https://github.com/KEEPBOO/keepboo',
     license='',

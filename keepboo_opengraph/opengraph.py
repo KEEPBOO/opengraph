@@ -4,6 +4,7 @@
 import re
 import json
 import urllib2
+import urlparse
 from bs4 import BeautifulSoup
 
 
@@ -77,7 +78,11 @@ class OpenGraph(dict):
     def fetch_image(self, doc):
         images = [dict(img.attrs) for img in doc.html.body.findAll('img')]
         if images:
-            return images[0].get('src')
+            img = images[0].get('src')
+            if is_absolute(img):
+                return img
+            elif self.url:
+                return self.url + img
         return u''
 
     def fetch_title(self, doc):
@@ -94,3 +99,7 @@ class OpenGraph(dict):
 
     def fetch_url(self, doc):
         return self.url
+
+
+def is_absolute(url):
+    return bool(urlparse.urlparse(url).netloc)
