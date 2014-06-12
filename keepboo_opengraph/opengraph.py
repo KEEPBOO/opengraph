@@ -81,8 +81,11 @@ class OpenGraph(dict):
             img = images[0].get('src')
             if is_absolute(img):
                 return img
-            elif self.url:
-                return self.url + img
+            elif self.url and img:
+                if self.url[-1:] == '/' or img[0] == '/':
+                    return self.url + img
+                else:
+                    return self.url + '/' + img
         return u''
 
     def fetch_title(self, doc):
